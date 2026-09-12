@@ -1,0 +1,41 @@
+/* ============================================================================
+   Google Places Autocomplete dropdown (.pac-container) — themed to match the
+   checkout form. Loaded on the checkout page.
+   ========================================================================== */
+.pac-container {
+    z-index: 100010;                 /* above modals/overlays */
+    border: 1px solid #e8ecf0;
+    border-radius: 12px;
+    box-shadow: 0 16px 40px rgba(20, 30, 60, .16);
+    margin-top: 6px;
+    padding: 6px;
+    background: #fff;
+    font-family: inherit;
+    overflow: hidden;
+}
+.pac-container:after { display: none; }   /* hide the "powered by Google" bg image row spacing */
+
+.pac-item {
+    border: 0;
+    border-radius: 9px;
+    padding: 9px 12px;
+    font-size: 13.5px;
+    color: #374151;
+    cursor: pointer;
+    line-height: 1.4;
+}
+.pac-item:hover,
+.pac-item-selected,
+.pac-item-selected:hover {
+    background: #f2f8ff;
+}
+.pac-icon {
+    margin-right: 10px;
+    margin-top: 2px;
+}
+.pac-item-query {
+    font-size: 13.5px;
+    color: #1a1a2e;
+    font-weight: 600;
+}
+.pac-matched { font-weight: 700; }

@@ -1,0 +1,123 @@
+/* ============================================================================
+   ADMIN AUCTIONS — rich dashboard + Yajra DataTable + live countdowns.
+   ========================================================================== */
+:root {
+    --au-ink: #232333;
+    --au-muted: #8c9097;
+    --au-line: #e9edf2;
+    --au-bg: #f7f8fb;
+    --au-radius: 14px;
+    --au-shadow: 0 8px 24px rgba(20, 30, 60, .06);
+}
+
+/* ---------- Stat cards (rich) ---------- */
+.au-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-bottom: 22px; }
+.au-stat { position: relative; overflow: hidden; border-radius: var(--au-radius); padding: 20px; color: #fff; box-shadow: var(--au-shadow); min-height: 112px; display: flex; align-items: center; gap: 16px; }
+.au-stat::before { content: ""; position: absolute; inset: 0; background: radial-gradient(circle at 85% 20%, rgba(255,255,255,.22), transparent 45%); }
+.au-stat::after { content: ""; position: absolute; right: -22px; bottom: -22px; width: 96px; height: 96px; border-radius: 50%; background: rgba(255,255,255,.12); }
+.au-stat__icon { width: 52px; height: 52px; border-radius: 14px; display: grid; place-items: center; font-size: 24px; background: rgba(255,255,255,.24); position: relative; z-index: 1; flex: 0 0 auto; }
+.au-stat__num { font-size: 26px; font-weight: 800; line-height: 1; position: relative; z-index: 1; }
+.au-stat__label { font-size: 12.5px; opacity: .92; position: relative; z-index: 1; margin-top: 4px; }
+.au-stat--total   { background: linear-gradient(135deg, #4f46e5, #7c73ff); }
+.au-stat--live    { background: linear-gradient(135deg, #dc2626, #f97316); }
+.au-stat--ended   { background: linear-gradient(135deg, #475569, #94a3b8); }
+.au-stat--sold    { background: linear-gradient(135deg, #12b76a, #34d399); }
+.au-stat--bids    { background: linear-gradient(135deg, #0891b2, #22d3ee); }
+.au-stat--highest { background: linear-gradient(135deg, #7c3aed, #db2777); }
+
+/* pulse dot for live */
+.au-stat--live .au-stat__icon { position: relative; }
+.au-stat--live .au-stat__icon::after { content: ""; position: absolute; top: 8px; right: 8px; width: 8px; height: 8px; border-radius: 50%; background: #fff; box-shadow: 0 0 0 0 rgba(255,255,255,.7); animation: auPulse 1.6s infinite; }
+@keyframes auPulse { 0% { box-shadow: 0 0 0 0 rgba(255,255,255,.6); } 70% { box-shadow: 0 0 0 10px rgba(255,255,255,0); } 100% { box-shadow: 0 0 0 0 rgba(255,255,255,0); } }
+
+/* ---------- Cells ---------- */
+.au-prod { display: flex; align-items: center; gap: 12px; }
+.au-thumb { width: 50px; height: 50px; border-radius: 11px; object-fit: cover; border: 1px solid var(--au-line); flex: 0 0 auto; }
+.au-thumb--ph { display: grid; place-items: center; color: #c7ccd6; background: var(--au-bg); font-size: 22px; }
+.au-prod__name { font-weight: 700; color: var(--au-ink); font-size: 14px; }
+.au-cat { font-size: 11.5px; color: var(--au-muted); background: var(--au-bg); padding: 2px 8px; border-radius: 6px; display: inline-block; margin-top: 3px; }
+.au-vendor { font-size: 12.5px; color: var(--au-muted); }
+.au-vendor i { color: #7c73ff; }
+
+.au-bid { display: flex; flex-direction: column; }
+.au-bid__cur { font-size: 15px; font-weight: 800; color: #12b76a; }
+.au-bid__start { font-size: 11px; color: var(--au-muted); }
+.au-reserve { font-size: 13px; font-weight: 700; color: #b7791f; }
+.au-reserve.is-met { color: #12b76a; }
+.au-chip { display: inline-flex; align-items: center; gap: 5px; padding: 5px 11px; border-radius: 999px; font-size: 12.5px; font-weight: 700; background: #eef0ff; color: #4f46e5; }
+
+/* countdown */
+.au-countdown { display: inline-flex; align-items: center; gap: 6px; padding: 5px 11px; border-radius: 999px; font-size: 12.5px; font-weight: 700; background: #fff1e6; color: #d9480f; font-variant-numeric: tabular-nums; }
+.au-countdown.is-soon { background: #fee2e2; color: #dc2626; animation: auBlink 1s steps(2) infinite; }
+@keyframes auBlink { 50% { opacity: .55; } }
+.au-time--ended { display: inline-flex; align-items: center; gap: 5px; font-size: 12.5px; color: var(--au-muted); }
+
+.au-badge { display: inline-flex; align-items: center; padding: 4px 12px; border-radius: 999px; font-size: 11.5px; font-weight: 700; }
+.au-badge--live   { background: #fee2e2; color: #dc2626; }
+.au-badge--ended  { background: #eef0f6; color: #6b7280; }
+.au-badge--sold   { background: #e6f7ef; color: #12b76a; }
+.au-badge--unsold { background: #fff5e6; color: #b7791f; }
+.au-winner { font-size: 11.5px; color: #7c3aed; font-weight: 700; margin-top: 3px; }
+.au-winner i { color: #f59e0b; }
+
+.au-act { width: 34px; height: 34px; border-radius: 9px; display: grid; place-items: center; color: #fff; text-decoration: none; font-size: 16px; background: linear-gradient(135deg, #6b7280, #9ca3af); transition: transform .12s; }
+.au-act:hover { transform: translateY(-2px); color: #fff; }
+.au-act--view { background: linear-gradient(135deg, #4f46e5, #7c73ff); }
+
+/* ---------- DataTable ---------- */
+.au-table-card { background: #fff; border: 1px solid var(--au-line); border-radius: var(--au-radius); box-shadow: var(--au-shadow); padding: 16px 18px; }
+#auctionsTable { width: 100% !important; border-collapse: separate; border-spacing: 0; }
+#auctionsTable thead th { text-align: left; font-size: 11px; text-transform: uppercase; letter-spacing: .04em; color: var(--au-muted); font-weight: 700; padding: 10px 12px; border-bottom: 2px solid var(--au-line); }
+#auctionsTable tbody td { padding: 14px 12px; border-bottom: 1px solid var(--au-line); vertical-align: middle; font-size: 13.5px; color: var(--au-ink); }
+#auctionsTable tbody tr:hover td { background: #fafbff; }
+.dataTables_wrapper .dataTables_length select { border: 1px solid var(--au-line); border-radius: 8px; padding: 6px 8px; }
+.dataTables_wrapper .dataTables_paginate .paginate_button.current { background: linear-gradient(135deg, #4f46e5, #7c73ff) !important; color: #fff !important; border: 0 !important; border-radius: 8px; }
+.dataTables_wrapper .dataTables_paginate .paginate_button { border-radius: 8px !important; padding: 5px 12px !important; }
+.dataTables_wrapper .dataTables_info, .dataTables_wrapper .dataTables_length { font-size: 13px; color: var(--au-muted); }
+.dt-top { display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px; flex-wrap: wrap; gap: 10px; }
+
+.au-tabs { display: inline-flex; gap: 6px; background: #fff; border: 1px solid var(--au-line); border-radius: 12px; padding: 5px; box-shadow: var(--au-shadow); flex-wrap: wrap; }
+.au-tab { border: 0; background: none; padding: 8px 16px; border-radius: 9px; font-size: 13.5px; font-weight: 600; color: #6b7280; cursor: pointer; }
+.au-tab.is-active { background: linear-gradient(135deg, #4f46e5, #7c73ff); color: #fff; }
+
+/* ============================================================================
+   AUCTION DETAIL
+   ========================================================================== */
+.aud-hero { position: relative; overflow: hidden; border-radius: 18px; color: #fff; padding: 26px 30px; margin-bottom: 22px;
+    background: linear-gradient(135deg, #0f172a 0%, #4f46e5 55%, #db2777 100%); box-shadow: 0 18px 40px rgba(79,70,229,.25);
+    display: flex; align-items: center; gap: 20px; flex-wrap: wrap; }
+.aud-hero::before { content: ""; position: absolute; width: 320px; height: 320px; border-radius: 50%; top: -140px; right: -40px; background: rgba(255,255,255,.1); }
+.aud-hero__img { width: 84px; height: 84px; border-radius: 16px; object-fit: cover; border: 2px solid rgba(255,255,255,.3); position: relative; z-index: 1; flex: 0 0 auto; }
+.aud-hero__img-ph { width: 84px; height: 84px; border-radius: 16px; display: grid; place-items: center; font-size: 32px; background: rgba(255,255,255,.18); border: 2px solid rgba(255,255,255,.3); position: relative; z-index: 1; flex: 0 0 auto; }
+.aud-hero__info { position: relative; z-index: 1; }
+.aud-hero__name { font-size: 24px; font-weight: 800; margin: 0; }
+.aud-hero__sub { font-size: 13px; opacity: .9; margin-top: 4px; }
+.aud-hero__right { margin-left: auto; position: relative; z-index: 1; text-align: right; }
+.aud-hero__cur { font-size: 30px; font-weight: 800; }
+.aud-hero__curlbl { font-size: 11px; opacity: .85; text-transform: uppercase; letter-spacing: .06em; }
+
+.aud-grid { display: grid; grid-template-columns: 1fr 340px; gap: 22px; align-items: start; }
+.aud-mini { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin-bottom: 22px; }
+.aud-minicard { background: #fff; border: 1px solid var(--au-line); border-radius: var(--au-radius); box-shadow: var(--au-shadow); padding: 16px; }
+.aud-minicard__lbl { font-size: 11.5px; color: var(--au-muted); text-transform: uppercase; letter-spacing: .04em; }
+.aud-minicard__val { font-size: 19px; font-weight: 800; color: var(--au-ink); margin-top: 4px; }
+
+.aud-card { background: #fff; border: 1px solid var(--au-line); border-radius: var(--au-radius); box-shadow: var(--au-shadow); margin-bottom: 22px; }
+.aud-card__head { padding: 15px 20px; border-bottom: 1px solid var(--au-line); font-weight: 700; color: var(--au-ink); font-size: 15px; display: flex; align-items: center; gap: 8px; }
+.aud-card__head i { color: #7c73ff; }
+.aud-card__body { padding: 20px; }
+
+.aud-bidrow { display: flex; align-items: center; gap: 12px; padding: 12px 0; border-bottom: 1px dashed var(--au-line); }
+.aud-bidrow:last-child { border-bottom: 0; }
+.aud-bidrow.is-winning { background: #f0fdf4; border-radius: 10px; padding: 12px; }
+.aud-bidder { width: 34px; height: 34px; border-radius: 50%; display: grid; place-items: center; font-weight: 800; color: #fff; background: linear-gradient(135deg, #4f46e5, #7c73ff); font-size: 14px; flex: 0 0 auto; }
+.aud-bidrow__name { font-weight: 700; color: var(--au-ink); font-size: 14px; }
+.aud-bidrow__time { font-size: 12px; color: var(--au-muted); }
+.aud-bidrow__amt { margin-left: auto; font-weight: 800; color: #12b76a; font-size: 15px; }
+.aud-bidrow__crown { color: #f59e0b; margin-left: 8px; }
+
+.aud-cd { display: inline-flex; align-items: center; gap: 8px; margin-top: 8px; padding: 6px 14px; border-radius: 999px; background: rgba(255,255,255,.2); font-weight: 800; font-variant-numeric: tabular-nums; }
+
+@media (max-width: 1200px) { .au-stats { grid-template-columns: repeat(2, 1fr); } .aud-mini { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 991px)  { .aud-grid { grid-template-columns: 1fr; } }
+@media (max-width: 575px)  { .au-stats { grid-template-columns: 1fr; } .aud-mini { grid-template-columns: 1fr; } }

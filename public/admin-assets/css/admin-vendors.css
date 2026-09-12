@@ -1,0 +1,133 @@
+/* ============================================================================
+   ADMIN VENDORS — dashboard stats + Yajra DataTable (rich, YNEX theme).
+   ========================================================================== */
+:root {
+    --av-ink: #232333;
+    --av-muted: #8c9097;
+    --av-line: #e9edf2;
+    --av-bg: #f7f8fb;
+    --av-radius: 14px;
+    --av-shadow: 0 8px 24px rgba(20, 30, 60, .06);
+}
+
+/* ---------- Stat cards ---------- */
+.av-stats { display: grid; grid-template-columns: repeat(5, 1fr); gap: 16px; margin-bottom: 22px; }
+.av-stat {
+    position: relative; overflow: hidden; border-radius: var(--av-radius); padding: 18px;
+    color: #fff; box-shadow: var(--av-shadow); display: flex; flex-direction: column; gap: 8px; min-height: 104px;
+}
+.av-stat::after { content: ""; position: absolute; right: -18px; bottom: -18px; width: 84px; height: 84px; border-radius: 50%; background: rgba(255,255,255,.14); }
+.av-stat__icon { width: 40px; height: 40px; border-radius: 11px; display: grid; place-items: center; font-size: 19px; background: rgba(255,255,255,.22); position: relative; z-index: 1; }
+.av-stat__num { font-size: 24px; font-weight: 800; line-height: 1; position: relative; z-index: 1; }
+.av-stat__label { font-size: 12px; opacity: .92; position: relative; z-index: 1; }
+.av-stat--total    { background: linear-gradient(135deg, #4f46e5, #7c73ff); }
+.av-stat--approved { background: linear-gradient(135deg, #12b76a, #34d399); }
+.av-stat--pending  { background: linear-gradient(135deg, #f59e0b, #fbbf24); }
+.av-stat--rejected { background: linear-gradient(135deg, #ef4444, #f87171); }
+.av-stat--earnings { background: linear-gradient(135deg, #7c3aed, #a855f7); }
+
+/* ---------- Store / owner cells ---------- */
+.av-store { display: flex; align-items: center; gap: 12px; }
+.av-logo { width: 46px; height: 46px; border-radius: 11px; object-fit: cover; border: 1px solid var(--av-line); flex: 0 0 auto; }
+.av-logo--ph { display: grid; place-items: center; font-weight: 800; color: #fff; background: linear-gradient(135deg, #4f46e5, #7c73ff); }
+.av-store__name { font-weight: 700; color: var(--av-ink); font-size: 14px; }
+.av-store__sub { font-size: 12px; color: var(--av-muted); }
+.av-owner__name { font-weight: 700; color: var(--av-ink); font-size: 13.5px; }
+.av-owner__email { font-size: 12px; color: var(--av-muted); }
+.av-date { font-size: 13px; color: var(--av-ink); }
+
+/* ---------- Chips ---------- */
+.av-chip { display: inline-flex; align-items: center; gap: 5px; padding: 5px 11px; border-radius: 999px; font-size: 12.5px; font-weight: 700; }
+.av-chip--prod  { background: #eef0ff; color: #4f46e5; }
+.av-chip--order { background: #e7f0ff; color: #1565c0; }
+.av-earn { font-size: 15px; font-weight: 800; color: #12b76a; }
+
+/* ---------- Status badge ---------- */
+.av-badge { display: inline-flex; align-items: center; padding: 4px 12px; border-radius: 999px; font-size: 11.5px; font-weight: 700; }
+.av-badge--approved { background: #e6f7ef; color: #12b76a; }
+.av-badge--pending  { background: #fff5e6; color: #b7791f; }
+.av-badge--rejected { background: #fdecec; color: #e03131; }
+
+/* ---------- Actions ---------- */
+.av-actions { display: inline-flex; gap: 6px; align-items: center; }
+.av-act { width: 34px; height: 34px; border: 0; border-radius: 9px; display: grid; place-items: center; cursor: pointer; text-decoration: none; color: #fff; font-size: 16px; transition: transform .12s, filter .12s; }
+.av-act:hover { transform: translateY(-2px); filter: brightness(1.05); color: #fff; }
+.av-act--view { background: linear-gradient(135deg, #6b7280, #9ca3af); }
+.av-act--ok   { background: linear-gradient(135deg, #12b76a, #34d399); }
+.av-act--no   { background: linear-gradient(135deg, #ef4444, #f87171); }
+
+/* ---------- DataTable ---------- */
+.av-table-card { background: #fff; border: 1px solid var(--av-line); border-radius: var(--av-radius); box-shadow: var(--av-shadow); padding: 16px 18px; }
+#vendorsTable { width: 100% !important; border-collapse: separate; border-spacing: 0; }
+#vendorsTable thead th { text-align: left; font-size: 11px; text-transform: uppercase; letter-spacing: .04em; color: var(--av-muted); font-weight: 700; padding: 10px 12px; border-bottom: 2px solid var(--av-line); }
+#vendorsTable tbody td { padding: 14px 12px; border-bottom: 1px solid var(--av-line); vertical-align: middle; font-size: 13.5px; color: var(--av-ink); }
+#vendorsTable tbody tr:hover td { background: #fafbff; }
+
+.dataTables_wrapper .dataTables_length select { border: 1px solid var(--av-line); border-radius: 8px; padding: 6px 8px; }
+.dataTables_wrapper .dataTables_paginate .paginate_button.current { background: linear-gradient(135deg, #4f46e5, #7c73ff) !important; color: #fff !important; border: 0 !important; border-radius: 8px; }
+.dataTables_wrapper .dataTables_paginate .paginate_button { border-radius: 8px !important; padding: 5px 12px !important; }
+.dataTables_wrapper .dataTables_info, .dataTables_wrapper .dataTables_length { font-size: 13px; color: var(--av-muted); }
+.dt-top { display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px; flex-wrap: wrap; gap: 10px; }
+
+/* ---------- Status tabs / filter ---------- */
+.av-tabs { display: inline-flex; gap: 6px; background: #fff; border: 1px solid var(--av-line); border-radius: 12px; padding: 5px; box-shadow: var(--av-shadow); }
+.av-tab { border: 0; background: none; padding: 8px 18px; border-radius: 9px; font-size: 13.5px; font-weight: 600; color: #6b7280; cursor: pointer; }
+.av-tab.is-active { background: linear-gradient(135deg, #4f46e5, #7c73ff); color: #fff; }
+
+/* ============================================================================
+   VENDOR DETAIL PAGE
+   ========================================================================== */
+.avd-hero {
+    position: relative; overflow: hidden; border-radius: 18px; color: #fff;
+    padding: 26px 30px; margin-bottom: 22px;
+    background: linear-gradient(135deg, #0f3460 0%, #4f46e5 55%, #7c73ff 100%);
+    box-shadow: 0 18px 40px rgba(79, 70, 229, .25);
+    display: flex; align-items: center; gap: 20px; flex-wrap: wrap;
+}
+.avd-hero::before { content: ""; position: absolute; width: 300px; height: 300px; border-radius: 50%; top: -130px; right: -50px; background: rgba(255,255,255,.12); pointer-events: none; }
+.avd-hero__logo { width: 74px; height: 74px; border-radius: 18px; flex: 0 0 auto; display: grid; place-items: center; font-size: 30px; font-weight: 800; color: #fff; background: rgba(255,255,255,.18); border: 1px solid rgba(255,255,255,.35); position: relative; z-index: 1; overflow: hidden; }
+.avd-hero__logo img { width: 100%; height: 100%; object-fit: cover; }
+.avd-hero__info { position: relative; z-index: 1; }
+.avd-hero__name { font-size: 24px; font-weight: 800; margin: 0; }
+.avd-hero__owner { font-size: 13px; opacity: .9; margin-top: 4px; }
+.avd-hero__status { margin-left: auto; position: relative; z-index: 1; }
+.avd-hero__status .av-badge { font-size: 13px; padding: 7px 16px; background: rgba(255,255,255,.9); }
+
+.avd-grid { display: grid; grid-template-columns: 1fr 320px; gap: 22px; align-items: start; }
+
+.avd-card { background: #fff; border: 1px solid var(--av-line); border-radius: var(--av-radius); box-shadow: var(--av-shadow); margin-bottom: 22px; }
+.avd-card__head { padding: 15px 20px; border-bottom: 1px solid var(--av-line); font-weight: 700; color: var(--av-ink); font-size: 15px; display: flex; align-items: center; gap: 8px; }
+.avd-card__head i { color: #7c73ff; }
+.avd-card__body { padding: 20px; }
+
+.avd-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-bottom: 22px; }
+.avd-stat { border-radius: var(--av-radius); padding: 16px; color: #fff; position: relative; overflow: hidden; box-shadow: var(--av-shadow); }
+.avd-stat::after { content: ""; position: absolute; right: -14px; bottom: -14px; width: 66px; height: 66px; border-radius: 50%; background: rgba(255,255,255,.14); }
+.avd-stat__num { font-size: 22px; font-weight: 800; position: relative; z-index: 1; }
+.avd-stat__label { font-size: 12px; opacity: .92; position: relative; z-index: 1; }
+.avd-stat--prod { background: linear-gradient(135deg, #4f46e5, #7c73ff); }
+.avd-stat--ord  { background: linear-gradient(135deg, #0ea5e9, #38bdf8); }
+.avd-stat--earn { background: linear-gradient(135deg, #12b76a, #34d399); }
+
+.avd-row { display: flex; gap: 16px; padding: 12px 0; border-bottom: 1px solid var(--av-line); font-size: 14px; }
+.avd-row:last-child { border-bottom: 0; }
+.avd-row__k { width: 130px; flex: 0 0 auto; color: var(--av-muted); font-weight: 600; }
+.avd-row__v { color: var(--av-ink); }
+
+.avd-prod { display: flex; align-items: center; gap: 12px; padding: 10px 0; border-bottom: 1px dashed var(--av-line); }
+.avd-prod:last-child { border-bottom: 0; }
+.avd-prod__img { width: 42px; height: 42px; border-radius: 9px; object-fit: cover; border: 1px solid var(--av-line); flex: 0 0 auto; }
+.avd-prod__img-ph { width: 42px; height: 42px; border-radius: 9px; display: grid; place-items: center; color: #c7ccd6; background: var(--av-bg); border: 1px solid var(--av-line); flex: 0 0 auto; }
+.avd-prod__name { font-weight: 600; color: var(--av-ink); font-size: 13.5px; }
+.avd-prod__price { margin-left: auto; font-weight: 700; color: var(--av-ink); font-size: 13.5px; }
+
+.avd-btn { display: flex; align-items: center; justify-content: center; gap: 8px; width: 100%; padding: 13px; border: 0; border-radius: 11px; cursor: pointer; font-weight: 700; font-size: 14px; text-decoration: none; margin-bottom: 10px; transition: filter .12s, transform .12s; }
+.avd-btn:hover { filter: brightness(1.05); transform: translateY(-1px); }
+.avd-btn--approve { background: linear-gradient(135deg, #12b76a, #34d399); color: #fff; }
+.avd-btn--reject  { background: linear-gradient(135deg, #ef4444, #f87171); color: #fff; }
+.avd-btn--store   { background: linear-gradient(135deg, #4f46e5, #7c73ff); color: #fff; }
+.avd-btn--light   { background: var(--av-bg); color: var(--av-ink); border: 1px solid var(--av-line); }
+
+@media (max-width: 991px) { .avd-grid { grid-template-columns: 1fr; } }
+@media (max-width: 1200px) { .av-stats { grid-template-columns: repeat(3, 1fr); } }
+@media (max-width: 767px) { .av-stats { grid-template-columns: repeat(2, 1fr); } .avd-stats { grid-template-columns: 1fr; } }
