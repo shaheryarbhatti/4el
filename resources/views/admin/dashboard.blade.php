@@ -478,7 +478,7 @@
                 @foreach ($monthlyRevenue as $idx => $m)
                     @php
                         $pct = $maxRev > 0 ? ($m['revenue'] / $maxRev) * 100 : 0;
-                        $barH = max(4, round($pct * 1.6)); {{-- scale to 160px max --}}
+                        $barH = max(4, round($pct * 1.6)); // scale to 160px max
                     @endphp
                     <div class="db-bar-wrap">
                         <div class="db-bar"
