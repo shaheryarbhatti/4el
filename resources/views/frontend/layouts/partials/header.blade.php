@@ -458,8 +458,8 @@
                 {{-- Logo --}}
                 <td style="vertical-align:middle;white-space:nowrap;padding:0 12px 0 0;border:0;">
                     <a href="{{ route('home') }}" class="eb-logo">
-                        @if (setting('site_logo'))
-                            <img src="{{ asset('storage/'.setting('site_logo')) }}" alt="{{ setting('site_name', 'Marketplace') }}">
+                        @if (setting('logo'))
+                            <img src="{{ asset('storage/'.setting('logo')) }}" alt="{{ setting('site_name', 'Marketplace') }}">
                         @else
                             <span class="eb-logo-text"><span>M</span><span>a</span><span>r</span><span>k</span>et</span>
                         @endif
