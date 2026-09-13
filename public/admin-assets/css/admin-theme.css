@@ -13,13 +13,28 @@
 .app-sidebar {
     background: linear-gradient(185deg, #1f1b4d 0%, #2c1a63 52%, #3d1568 100%) !important;
     border-inline-end: 1px solid rgba(255, 255, 255, .06) !important;
+    display: flex !important;
+    flex-direction: column !important;
 }
-.app-sidebar .main-sidebar { background: transparent !important; }
-/* breathing room below the last menu item */
-.app-sidebar .main-menu { padding-bottom: 28px !important; }
+/* Scroll area fills the space left under the logo + user card, so every
+   menu item (including the last) is always reachable. */
+.app-sidebar .main-sidebar {
+    background: transparent !important;
+    flex: 1 1 auto !important;
+    min-height: 0 !important;
+    height: auto !important;
+    overflow-y: auto !important;
+    padding-top: 4px !important;
+}
+.app-sidebar .main-menu-container { padding-top: 0 !important; }
+/* tighter first section + breathing room below the last item */
+.app-sidebar .main-menu { padding-top: 2px !important; padding-bottom: 22px !important; }
+.app-sidebar .slide__category { margin-top: 8px !important; padding-block: 3px !important; }
+.app-sidebar .main-menu > .slide__category:first-child { margin-top: 2px !important; }
 .app-sidebar .main-sidebar-header {
     background: transparent !important;
     border-block-end: 1px solid rgba(255, 255, 255, .08) !important;
+    flex: 0 0 auto !important;
 }
 
 /* soft brand glow at the top of the rail */
@@ -89,10 +104,10 @@
 
 /* ── Logged-in user card ───────────────────────────────────────────────── */
 .sb-user {
-    position: relative; z-index: 1;
+    position: relative; z-index: 1; flex: 0 0 auto;
     display: flex; align-items: center; gap: 12px;
-    margin: 6px 14px 12px;
-    padding: 12px 14px;
+    margin: 4px 12px 6px;
+    padding: 11px 13px;
     border-radius: 16px;
     background: rgba(255, 255, 255, .08);
     border: 1px solid rgba(255, 255, 255, .14);
