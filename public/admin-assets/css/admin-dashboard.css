@@ -22,7 +22,7 @@
     --dbx-cyan:     #06b6d4;
 }
 
-.dbx-wrap { display: flex; flex-direction: column; gap: 20px; }
+.dbx-wrap { display: flex; flex-direction: column; gap: 20px; padding-bottom: 32px; }
 
 /* ── Colour utilities (icons / dots) ───────────────────────────────────── */
 .dbx-i-indigo { color: var(--dbx-indigo); }
