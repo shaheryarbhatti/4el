@@ -35,7 +35,8 @@ class SettingController extends Controller
         return [
             'general' => [
                 'site_name', 'site_tagline', 'currency', 'currency_symbol',
-                'contact_email', 'contact_phone', 'address', 'logo', 'favicon',
+                'contact_email', 'contact_phone', 'address',
+                'logo', 'favicon', 'admin_logo', 'login_logo',
             ],
             'payment' => [
                 // Stripe (mode = test/live sandbox switch)

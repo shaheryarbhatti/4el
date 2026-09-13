@@ -189,7 +189,7 @@
     {{-- ===================== LEFT: BRAND PANEL ===================== --}}
     <aside class="auth-brand">
         <div class="brand-top">
-            <img src="{{ asset('admin-assets/images/brand-logos/desktop-logo.png') }}" class="brand-logo" alt="logo">
+            <img src="{{ setting('login_logo') ? asset('storage/'.setting('login_logo')) : asset('admin-assets/images/brand-logos/desktop-logo.png') }}" class="brand-logo" alt="logo">
             <div class="brand-badge"><i class="ri-shield-check-line"></i> Secure Admin Access</div>
             <h1 class="brand-title">Run your marketplace with confidence</h1>
             <p class="brand-sub">Products, auctions, orders, vendors and payments — everything in one powerful, beautifully organized dashboard.</p>
@@ -251,7 +251,7 @@
     {{-- ===================== RIGHT: FORM ===================== --}}
     <main class="auth-form">
         <div class="form-card">
-            <img src="{{ asset('admin-assets/images/brand-logos/desktop-logo.png') }}" class="form-logo" alt="logo">
+            <img src="{{ setting('login_logo') ? asset('storage/'.setting('login_logo')) : asset('admin-assets/images/brand-logos/desktop-logo.png') }}" class="form-logo" alt="logo">
 
             <h2 class="form-h">Admin Sign In</h2>
             <p class="form-p">Welcome back to <b>{{ setting('site_name', 'eBay Clone') }}</b> — please sign in to continue.</p>

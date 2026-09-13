@@ -208,6 +208,41 @@
                 <div class="st-hint"><i class="bx bx-info-circle"></i> Shown in browser tabs — use 32×32px ICO or PNG</div>
             </div>
         </div>
+
+        <div class="row gy-4 mt-1">
+            {{-- Admin panel logo (sidebar) --}}
+            <div class="col-md-6">
+                <label class="st-label">Admin Panel Logo</label>
+                @if (!empty($values['admin_logo']))
+                <div class="st-file-preview">
+                    <img src="{{ asset('storage/'.$values['admin_logo']) }}" alt="admin logo">
+                    <span><i class="bx bx-check-circle me-1"></i>Current admin logo</span>
+                </div>
+                @endif
+                <div class="st-file-box">
+                    <input type="file" name="admin_logo" accept="image/*">
+                    <i class="bx bx-cloud-upload"></i>
+                    <span>Click to upload admin panel logo</span>
+                </div>
+                <div class="st-hint"><i class="bx bx-info-circle"></i> Shown in the admin sidebar — 200×60px transparent PNG (falls back to default)</div>
+            </div>
+            {{-- Login page logo --}}
+            <div class="col-md-6">
+                <label class="st-label">Login Page Logo</label>
+                @if (!empty($values['login_logo']))
+                <div class="st-file-preview">
+                    <img src="{{ asset('storage/'.$values['login_logo']) }}" alt="login logo">
+                    <span><i class="bx bx-check-circle me-1"></i>Current login logo</span>
+                </div>
+                @endif
+                <div class="st-file-box">
+                    <input type="file" name="login_logo" accept="image/*">
+                    <i class="bx bx-cloud-upload"></i>
+                    <span>Click to upload login page logo</span>
+                </div>
+                <div class="st-hint"><i class="bx bx-info-circle"></i> Shown on the admin login screen — 200×60px PNG (falls back to default)</div>
+            </div>
+        </div>
     </div>
 </div>
 
