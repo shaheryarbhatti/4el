@@ -71,7 +71,7 @@
             </div>
         </div>
         <div class="col-xl-3 col-md-6">
-            <div class="dbx-kpi dbx-accent-violet">
+            <div class="dbx-kpi dbx-accent-pink">
                 <div class="dbx-kpi__top">
                     <span class="dbx-kpi__label">Customers</span>
                     <span class="dbx-kpi__icon"><i class="bx bx-group"></i></span>
@@ -168,7 +168,8 @@
                     <svg class="dbx-chart-svg" viewBox="0 0 {{ $W }} {{ $H }}" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Monthly revenue bar chart">
                         <defs>
                             <linearGradient id="dbxBarGrad" x1="0" y1="0" x2="0" y2="1">
-                                <stop offset="0%" stop-color="#818cf8"/>
+                                <stop offset="0%" stop-color="#a855f7"/>
+                                <stop offset="55%" stop-color="#7c3aed"/>
                                 <stop offset="100%" stop-color="#4f46e5"/>
                             </linearGradient>
                         </defs>
@@ -372,7 +373,7 @@
                         <rect x="0" y="0" width="100" height="14" fill="#eef2f7"/>
                         @if ($earnTotal > 0)
                             <rect x="0" y="0" width="{{ round($vPct, 2) }}" height="14" fill="#10b981"/>
-                            <rect x="{{ round($vPct, 2) }}" y="0" width="{{ round($pPct, 2) }}" height="14" fill="#6366f1"/>
+                            <rect x="{{ round($vPct, 2) }}" y="0" width="{{ round($pPct, 2) }}" height="14" fill="#4f46e5"/>
                         @endif
                     </svg>
                     <div class="dbx-earn">

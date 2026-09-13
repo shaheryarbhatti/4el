@@ -13,12 +13,14 @@
     --dbx-shadow:   0 1px 3px rgba(15,23,42,.06), 0 8px 24px rgba(15,23,42,.05);
     --dbx-shadow-h: 0 12px 32px rgba(15,23,42,.12);
     --dbx-radius:   18px;
-    --dbx-indigo:   #6366f1;
+    /* Brand palette — matches the admin login page */
+    --dbx-indigo:   #4f46e5;   /* brand-1 */
+    --dbx-violet:   #7c3aed;   /* brand-2 */
+    --dbx-pink:     #db2777;   /* brand-3 */
+    --dbx-blue:     #2563eb;   /* brand-4 */
     --dbx-green:    #10b981;
-    --dbx-blue:     #3b82f6;
     --dbx-amber:    #f59e0b;
     --dbx-red:      #ef4444;
-    --dbx-violet:   #8b5cf6;
     --dbx-cyan:     #06b6d4;
 }
 
@@ -31,6 +33,7 @@
 .dbx-i-amber  { color: var(--dbx-amber); }
 .dbx-i-red    { color: var(--dbx-red); }
 .dbx-i-violet { color: var(--dbx-violet); }
+.dbx-i-pink   { color: var(--dbx-pink); }
 .dbx-i-cyan   { color: var(--dbx-cyan); }
 .dbx-st-pending    { background: #f59e0b; }
 .dbx-st-processing { background: #3b82f6; }
@@ -38,23 +41,26 @@
 .dbx-st-delivered  { background: #10b981; }
 .dbx-st-cancelled  { background: #ef4444; }
 .dbx-dot-green  { background: #10b981; }
-.dbx-dot-indigo { background: #6366f1; }
+.dbx-dot-indigo { background: #4f46e5; }
 
 /* ── Hero banner ───────────────────────────────────────────────────────── */
 .dbx-hero {
     position: relative; overflow: hidden;
-    background: linear-gradient(120deg, #1e1b4b 0%, #312e81 45%, #6d28d9 100%);
+    background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 52%, #db2777 100%);
     border-radius: 22px;
     padding: 26px 30px;
     display: flex; align-items: center; gap: 18px; flex-wrap: wrap;
-    box-shadow: 0 12px 34px rgba(76,29,149,.28);
+    box-shadow: 0 14px 36px rgba(124,58,237,.32);
 }
 .dbx-hero::before,
 .dbx-hero::after {
     content: ''; position: absolute; border-radius: 50%; pointer-events: none;
 }
-.dbx-hero::before { top: -70px; right: -40px; width: 260px; height: 260px; background: rgba(255,255,255,.06); }
-.dbx-hero::after  { bottom: -90px; right: 160px; width: 200px; height: 200px; background: rgba(255,255,255,.04); }
+/* colourful gradient-mesh glows, same accents as the login screen */
+.dbx-hero::before { top: -90px; right: -30px; width: 300px; height: 300px;
+    background: radial-gradient(circle at 30% 30%, rgba(34,211,238,.40), transparent 62%); }
+.dbx-hero::after  { bottom: -110px; right: 130px; width: 240px; height: 240px;
+    background: radial-gradient(circle at 60% 60%, rgba(219,39,119,.45), transparent 62%); }
 .dbx-hero__icon {
     width: 62px; height: 62px; border-radius: 18px; flex-shrink: 0;
     display: flex; align-items: center; justify-content: center;
@@ -121,6 +127,7 @@
 .dbx-accent-amber  { --dbx-accent: var(--dbx-amber); }
 .dbx-accent-red    { --dbx-accent: var(--dbx-red); }
 .dbx-accent-violet { --dbx-accent: var(--dbx-violet); }
+.dbx-accent-pink   { --dbx-accent: var(--dbx-pink); }
 .dbx-accent-cyan   { --dbx-accent: var(--dbx-cyan); }
 
 /* ── Mini stat strip ───────────────────────────────────────────────────── */
@@ -208,7 +215,7 @@
     width: 30px; height: 30px; border-radius: 9px; flex-shrink: 0;
     display: flex; align-items: center; justify-content: center;
     font-size: 12px; font-weight: 800; color: #fff;
-    background: linear-gradient(135deg, #818cf8, #6366f1);
+    background: linear-gradient(135deg, #7c3aed, #4f46e5);
 }
 .dbx-cust__name { font-weight: 600; color: var(--dbx-ink); }
 .dbx-amt { font-weight: 800; color: var(--dbx-ink); }
