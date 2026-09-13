@@ -33,8 +33,8 @@
 /* tighter first section + small room below the last item */
 .app-sidebar .main-menu { padding-top: 0 !important; padding-bottom: 8px !important; margin-top: 0 !important; }
 .app-sidebar .main-menu-container { margin-top: 0 !important; }
-.app-sidebar .slide__category { margin-top: 5px !important; padding-block: 2px !important; }
-.app-sidebar .main-menu > .slide__category:first-child { margin-top: 0 !important; padding-top: 0 !important; }
+.app-sidebar .slide__category { margin-top: 5px !important; padding-block: 1px !important; }
+.app-sidebar .main-menu > .slide__category:first-child { margin-top: 0 !important; padding-top: 2px !important; }
 .app-sidebar .main-sidebar-header {
     background: transparent !important;
     border-block-end: 1px solid rgba(255, 255, 255, .08) !important;
@@ -108,7 +108,7 @@
 .sb-user {
     position: relative; z-index: 1; flex: 0 0 auto;
     display: flex; align-items: center; gap: 11px;
-    margin: 3px 12px 1px;
+    margin: 14px 12px 0;
     padding: 9px 12px;
     border-radius: 15px;
     background: rgba(255, 255, 255, .08);
