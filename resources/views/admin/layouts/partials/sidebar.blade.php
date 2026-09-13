@@ -21,6 +21,25 @@
         </a>
     </div>
 
+    {{-- Logged-in user card --}}
+    @php
+        $sbUser = auth()->user();
+        $sbRole = $sbUser?->getRoleNames()->first() ?? 'Administrator';
+        $sbAvatar = $sbUser && $sbUser->avatar
+            ? asset('storage/'.$sbUser->avatar)
+            : asset('admin-assets/images/faces/9.jpg');
+    @endphp
+    <div class="sb-user">
+        <div class="sb-user__avatar">
+            <img src="{{ $sbAvatar }}" alt="{{ $sbUser->name ?? 'User' }}">
+            <span class="sb-user__status" title="Online"></span>
+        </div>
+        <div class="sb-user__info">
+            <div class="sb-user__name">{{ $sbUser->name ?? 'Admin' }}</div>
+            <div class="sb-user__role"><i class="bx bxs-shield-alt-2"></i> {{ ucfirst($sbRole) }}</div>
+        </div>
+    </div>
+
     <div class="main-sidebar" id="sidebar-scroll">
         <nav class="main-menu-container nav nav-pills flex-column sub-open">
             <ul class="main-menu">
