@@ -87,7 +87,7 @@
 
 /* Logo */
 .eb-logo { display: inline-flex; align-items: center; line-height: 1; text-decoration: none; }
-.eb-logo img { height: 40px; width: auto; display: block; }
+.eb-logo img { height: 40px; width: auto; max-width: none; flex-shrink: 0; display: block; }
 .eb-logo-text {
     font-size: 30px; font-weight: 900; text-decoration: none;
     color: #e53238; letter-spacing: -1px; line-height: 1;
