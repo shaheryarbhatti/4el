@@ -15,6 +15,8 @@
     border-inline-end: 1px solid rgba(255, 255, 255, .06) !important;
 }
 .app-sidebar .main-sidebar { background: transparent !important; }
+/* breathing room below the last menu item */
+.app-sidebar .main-menu { padding-bottom: 28px !important; }
 .app-sidebar .main-sidebar-header {
     background: transparent !important;
     border-block-end: 1px solid rgba(255, 255, 255, .08) !important;
