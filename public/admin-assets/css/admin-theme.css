@@ -16,21 +16,24 @@
     display: flex !important;
     flex-direction: column !important;
 }
-/* Scroll area fills the space left under the logo + user card, so every
-   menu item (including the last) is always reachable. */
+/* Menu area fills the space left under the logo + user card. Compact sizing
+   keeps every item on one screen, so no sidebar scrollbar appears. */
 .app-sidebar .main-sidebar {
     background: transparent !important;
     flex: 1 1 auto !important;
     min-height: 0 !important;
     height: auto !important;
     overflow-y: auto !important;
-    padding-top: 4px !important;
+    padding-top: 2px !important;
 }
+/* hide the scrollbar visual even if content is a hair taller */
+.app-sidebar .main-sidebar { scrollbar-width: none; }
+.app-sidebar .main-sidebar::-webkit-scrollbar { width: 0 !important; height: 0 !important; }
 .app-sidebar .main-menu-container { padding-top: 0 !important; }
-/* tighter first section + breathing room below the last item */
-.app-sidebar .main-menu { padding-top: 2px !important; padding-bottom: 22px !important; }
-.app-sidebar .slide__category { margin-top: 8px !important; padding-block: 3px !important; }
-.app-sidebar .main-menu > .slide__category:first-child { margin-top: 2px !important; }
+/* tighter first section + small room below the last item */
+.app-sidebar .main-menu { padding-top: 0 !important; padding-bottom: 8px !important; }
+.app-sidebar .slide__category { margin-top: 5px !important; padding-block: 2px !important; }
+.app-sidebar .main-menu > .slide__category:first-child { margin-top: 1px !important; }
 .app-sidebar .main-sidebar-header {
     background: transparent !important;
     border-block-end: 1px solid rgba(255, 255, 255, .08) !important;
@@ -52,24 +55,24 @@
 .app-sidebar .category-name {
     color: rgba(255, 255, 255, .58) !important;
     text-transform: uppercase; letter-spacing: .1em;
-    font-weight: 700; font-size: 11px;
+    font-weight: 700; font-size: 10px; line-height: 1;
 }
 
 /* ── Menu items ────────────────────────────────────────────────────────── */
 .app-sidebar .side-menu__item {
     color: rgba(255, 255, 255, .92) !important;
-    border-radius: 12px !important;
-    margin: 3px 12px !important;
-    padding-block: 12px !important;
+    border-radius: 11px !important;
+    margin: 2px 12px !important;
+    padding-block: 7px !important;
     gap: 12px;
     transition: background .18s ease, color .18s ease, box-shadow .18s ease, transform .18s cubic-bezier(.34,1.56,.64,1);
 }
 .app-sidebar .side-menu__icon {
     color: rgba(255, 255, 255, .85) !important;
-    font-size: 21px !important;
+    font-size: 19px !important;
     transition: transform .25s cubic-bezier(.34,1.56,.64,1), color .18s ease;
 }
-.app-sidebar .side-menu__label { font-weight: 600 !important; font-size: 14.5px !important; letter-spacing: .1px; }
+.app-sidebar .side-menu__label { font-weight: 600 !important; font-size: 13.7px !important; letter-spacing: .1px; }
 
 .app-sidebar .side-menu__item:hover {
     background: rgba(255, 255, 255, .10) !important;
@@ -96,19 +99,17 @@
 .app-sidebar .slide-menu .side-menu__item { margin: 1px 10px !important; }
 .app-sidebar .slide-menu .side-menu__item:hover { background: rgba(255, 255, 255, .08) !important; }
 
-/* ── Custom scrollbar ──────────────────────────────────────────────────── */
-.app-sidebar .main-sidebar { scrollbar-width: thin; scrollbar-color: rgba(255,255,255,.2) transparent; }
-.app-sidebar .main-sidebar::-webkit-scrollbar { width: 6px; }
-.app-sidebar .main-sidebar::-webkit-scrollbar-thumb { background: rgba(255, 255, 255, .18); border-radius: 10px; }
-.app-sidebar .main-sidebar::-webkit-scrollbar-track { background: transparent; }
+/* ── No visible scrollbar in the sidebar ───────────────────────────────── */
+.app-sidebar .main-sidebar { scrollbar-width: none !important; }
+.app-sidebar .main-sidebar::-webkit-scrollbar { width: 0 !important; height: 0 !important; display: none !important; }
 
 /* ── Logged-in user card ───────────────────────────────────────────────── */
 .sb-user {
     position: relative; z-index: 1; flex: 0 0 auto;
-    display: flex; align-items: center; gap: 12px;
-    margin: 4px 12px 6px;
-    padding: 11px 13px;
-    border-radius: 16px;
+    display: flex; align-items: center; gap: 11px;
+    margin: 4px 12px 5px;
+    padding: 9px 12px;
+    border-radius: 15px;
     background: rgba(255, 255, 255, .08);
     border: 1px solid rgba(255, 255, 255, .14);
     backdrop-filter: blur(8px);
@@ -122,9 +123,9 @@
     background: linear-gradient(100deg, transparent, rgba(255, 255, 255, .18), transparent);
     transform: skewX(-18deg); animation: sbSheen 5.5s ease-in-out infinite;
 }
-.sb-user__avatar { position: relative; width: 46px; height: 46px; flex: 0 0 auto; }
+.sb-user__avatar { position: relative; width: 42px; height: 42px; flex: 0 0 auto; }
 .sb-user__avatar img {
-    width: 46px; height: 46px; border-radius: 50%; object-fit: cover;
+    width: 42px; height: 42px; border-radius: 50%; object-fit: cover;
     border: 2px solid rgba(255, 255, 255, .85); position: relative; z-index: 1;
 }
 /* spinning brand ring around the avatar */
