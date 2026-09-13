@@ -22,6 +22,9 @@
     <link rel="stylesheet" href="{{ asset('admin-assets/libs/flatpickr/flatpickr.min.css') }}">
     <link rel="stylesheet" href="{{ asset('admin-assets/libs/choices.js/public/assets/styles/choices.min.css') }}">
 
+    {{-- Brand theme (sidebar etc.) — loads on every admin page, after core CSS --}}
+    <link rel="stylesheet" href="{{ asset('admin-assets/css/admin-theme.css') }}">
+
     {{-- Page-specific CSS goes here --}}
     @stack('styles')
 </head>

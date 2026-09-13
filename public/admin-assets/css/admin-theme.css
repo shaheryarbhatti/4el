@@ -1,0 +1,80 @@
+/* ============================================================================
+   ADMIN THEME — brand sidebar, loaded on every admin page.
+   Matches the login / dashboard palette (indigo -> violet -> pink).
+   External styles only. Overrides the YNEX dark menu.
+   ========================================================================== */
+:root {
+    --side-1: #4f46e5;   /* indigo */
+    --side-2: #7c3aed;   /* violet */
+    --side-3: #db2777;   /* pink   */
+}
+
+/* ── Sidebar surface — deep brand gradient ─────────────────────────────── */
+.app-sidebar {
+    background: linear-gradient(185deg, #1f1b4d 0%, #2c1a63 52%, #3d1568 100%) !important;
+    border-inline-end: 1px solid rgba(255, 255, 255, .06) !important;
+}
+.app-sidebar .main-sidebar { background: transparent !important; }
+.app-sidebar .main-sidebar-header {
+    background: transparent !important;
+    border-block-end: 1px solid rgba(255, 255, 255, .08) !important;
+}
+
+/* soft brand glow at the top of the rail */
+.app-sidebar::before {
+    content: '';
+    position: absolute; inset: 0 0 auto 0; height: 220px;
+    background: radial-gradient(120% 80% at 20% 0%, rgba(124, 58, 237, .35), transparent 60%);
+    pointer-events: none; z-index: 0;
+}
+.app-sidebar .main-sidebar,
+.app-sidebar .main-sidebar-header { position: relative; z-index: 1; }
+
+/* ── Section headers (Main / Catalog / Sales / Users …) ────────────────── */
+.app-sidebar .slide__category .category-name,
+.app-sidebar .category-name {
+    color: rgba(255, 255, 255, .40) !important;
+    text-transform: uppercase; letter-spacing: .09em;
+    font-weight: 700; font-size: 10.5px;
+}
+
+/* ── Menu items ────────────────────────────────────────────────────────── */
+.app-sidebar .side-menu__item {
+    color: rgba(255, 255, 255, .72) !important;
+    border-radius: 11px !important;
+    margin: 2px 12px !important;
+    padding-block: 9px !important;
+    transition: background .16s ease, color .16s ease, box-shadow .16s ease;
+}
+.app-sidebar .side-menu__icon { color: rgba(255, 255, 255, .58) !important; }
+.app-sidebar .side-menu__label { font-weight: 500; }
+
+.app-sidebar .side-menu__item:hover {
+    background: rgba(255, 255, 255, .09) !important;
+    color: #fff !important;
+}
+.app-sidebar .side-menu__item:hover .side-menu__icon { color: #fff !important; }
+
+/* ── Active item — brand gradient pill ─────────────────────────────────── */
+.app-sidebar .slide.active > .side-menu__item,
+.app-sidebar .side-menu__item.active {
+    background: linear-gradient(135deg, var(--side-1) 0%, var(--side-2) 58%, var(--side-3) 100%) !important;
+    color: #fff !important;
+    box-shadow: 0 8px 20px rgba(124, 58, 237, .45) !important;
+}
+.app-sidebar .slide.active > .side-menu__item .side-menu__icon,
+.app-sidebar .side-menu__item.active .side-menu__icon { color: #fff !important; }
+.app-sidebar .slide.active > .side-menu__item .side-menu__label { font-weight: 700; }
+/* kill the template's default active marker */
+.app-sidebar .slide.active > .side-menu__item::before { display: none !important; }
+
+/* ── Sub-menus (if any) ────────────────────────────────────────────────── */
+.app-sidebar .slide-menu { background: rgba(0, 0, 0, .16) !important; border-radius: 10px; }
+.app-sidebar .slide-menu .side-menu__item { margin: 1px 10px !important; }
+.app-sidebar .slide-menu .side-menu__item:hover { background: rgba(255, 255, 255, .08) !important; }
+
+/* ── Custom scrollbar ──────────────────────────────────────────────────── */
+.app-sidebar .main-sidebar { scrollbar-width: thin; scrollbar-color: rgba(255,255,255,.2) transparent; }
+.app-sidebar .main-sidebar::-webkit-scrollbar { width: 6px; }
+.app-sidebar .main-sidebar::-webkit-scrollbar-thumb { background: rgba(255, 255, 255, .18); border-radius: 10px; }
+.app-sidebar .main-sidebar::-webkit-scrollbar-track { background: transparent; }
