@@ -35,21 +35,21 @@
 /* ── Section headers (Main / Catalog / Sales / Users …) ────────────────── */
 .app-sidebar .slide__category .category-name,
 .app-sidebar .category-name {
-    color: rgba(255, 255, 255, .40) !important;
-    text-transform: uppercase; letter-spacing: .09em;
-    font-weight: 700; font-size: 10.5px;
+    color: rgba(255, 255, 255, .58) !important;
+    text-transform: uppercase; letter-spacing: .1em;
+    font-weight: 700; font-size: 11px;
 }
 
 /* ── Menu items ────────────────────────────────────────────────────────── */
 .app-sidebar .side-menu__item {
-    color: rgba(255, 255, 255, .72) !important;
+    color: rgba(255, 255, 255, .92) !important;
     border-radius: 11px !important;
     margin: 2px 12px !important;
     padding-block: 9px !important;
     transition: background .16s ease, color .16s ease, box-shadow .16s ease;
 }
-.app-sidebar .side-menu__icon { color: rgba(255, 255, 255, .58) !important; }
-.app-sidebar .side-menu__label { font-weight: 500; }
+.app-sidebar .side-menu__icon { color: rgba(255, 255, 255, .85) !important; font-size: 20px !important; }
+.app-sidebar .side-menu__label { font-weight: 600 !important; font-size: 14px !important; }
 
 .app-sidebar .side-menu__item:hover {
     background: rgba(255, 255, 255, .09) !important;
