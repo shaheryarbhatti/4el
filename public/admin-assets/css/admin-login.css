@@ -1,0 +1,38 @@
+/* ============================================================================
+   ADMIN LOGIN — fit everything on one screen (no page scroll).
+   External overrides for the login page's inline styles. Loaded AFTER the
+   inline <style> so these rules win.
+   ========================================================================== */
+
+/* The whole page fills exactly the viewport and never scrolls as a whole. */
+html, body { height: 100%; }
+body { overflow: hidden !important; }
+.auth-wrap { height: 100vh !important; min-height: 0 !important; }
+
+/* Tighten the left brand panel so its content fits within the viewport. */
+.auth-brand {
+    padding: 34px 52px !important;
+    justify-content: center !important;
+    gap: 16px !important;
+    overflow: hidden !important;
+}
+.auth-brand .brand-badge  { margin-top: 14px !important; }
+.auth-brand .brand-title  { font-size: 30px !important; margin-top: 14px !important; }
+.auth-brand .brand-sub    { margin-top: 10px !important; font-size: 14px !important; }
+.auth-brand .brand-art    { height: 160px !important; margin: 14px 0 !important; }
+.auth-brand .brand-features { gap: 12px !important; margin-top: 0 !important; }
+.auth-brand .brand-bottom { margin-top: 4px !important; }
+
+/* The form column fits too; if it is ever taller (very short screens),
+   only this column scrolls — not the whole page. */
+.auth-form {
+    padding: 28px 40px !important;
+    max-height: 100vh !important;
+    overflow-y: auto !important;
+}
+
+/* On small screens the brand panel is hidden; keep the form comfortable. */
+@media (max-width: 991px) {
+    body { overflow: auto !important; }
+    .auth-form { max-height: none !important; }
+}

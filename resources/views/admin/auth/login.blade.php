@@ -179,6 +179,9 @@
             .form-logo{display:block}
         }
     </style>
+
+    {{-- One-screen layout overrides (external, loaded after the inline styles) --}}
+    <link rel="stylesheet" href="{{ asset('admin-assets/css/admin-login.css') }}">
 </head>
 <body>
 <div class="auth-wrap">
