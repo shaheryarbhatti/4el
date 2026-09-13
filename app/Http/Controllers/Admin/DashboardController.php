@@ -47,14 +47,51 @@ class DashboardController extends Controller
             $ordersByStatus[$s] = $ordersByStatus[$s] ?? 0;
         }
 
+        $ordersPaid     = Order::where('payment_status', 'paid')->count();
+        $ordersUnpaid   = Order::where('payment_status', '!=', 'paid')->count();
+        $avgOrderValue  = $ordersPaid > 0 ? $revenueTotal / $ordersPaid : 0;
+
         // ── Products ─────────────────────────────────────────────────────────
         $productsActive = Product::where('is_active', true)
                                  ->where('status', 'approved')
                                  ->count();
+        $productsTotal  = Product::count();
+        $lowStock       = Product::where('stock', '>', 0)->where('stock', '<=', 5)->count();
+        $auctionsLive   = Product::where('listing_type', 'auction')
+                                 ->whereNull('auction_closed_at')
+                                 ->where('auction_ends_at', '>', $now)
+                                 ->count();
 
         // ── Vendors / Customers ───────────────────────────────────────────────
         $vendorsPending   = VendorProfile::where('status', 'pending')->count();
+        $vendorsApproved  = VendorProfile::where('status', 'approved')->count();
         $customersTotal   = User::role('customer')->count();
+        $newCustomers30d  = User::role('customer')
+                                ->where('created_at', '>=', $now->copy()->subDays(30))
+                                ->count();
+
+        // ── Earnings split (from paid orders' items) ──────────────────────────
+        $earnings = OrderItem::join('orders', 'orders.id', '=', 'order_items.order_id')
+                        ->where('orders.payment_status', 'paid')
+                        ->selectRaw('COALESCE(SUM(order_items.vendor_amount),0) as vendor_earnings')
+                        ->selectRaw('COALESCE(SUM(order_items.commission_amount),0) as platform_earnings')
+                        ->first();
+        $vendorEarnings   = (float) ($earnings->vendor_earnings ?? 0);
+        $platformEarnings = (float) ($earnings->platform_earnings ?? 0);
+
+        // ── Top 5 vendors by earnings ─────────────────────────────────────────
+        $topVendors = OrderItem::join('orders', 'orders.id', '=', 'order_items.order_id')
+                        ->join('users', 'users.id', '=', 'order_items.vendor_id')
+                        ->leftJoin('vendor_profiles', 'vendor_profiles.user_id', '=', 'order_items.vendor_id')
+                        ->where('orders.payment_status', 'paid')
+                        ->groupBy('order_items.vendor_id', 'users.name', 'vendor_profiles.store_name')
+                        ->selectRaw('order_items.vendor_id,
+                                     COALESCE(vendor_profiles.store_name, users.name) as store_name,
+                                     COALESCE(SUM(order_items.vendor_amount),0) as earnings,
+                                     COUNT(DISTINCT order_items.order_id) as orders_count')
+                        ->orderByDesc('earnings')
+                        ->limit(5)
+                        ->get();
 
         // ── Recent 6 orders ──────────────────────────────────────────────────
         $recentOrders = Order::with('user')
@@ -95,10 +132,21 @@ class DashboardController extends Controller
             'ordersTotal',
             'ordersPending',
             'ordersMonth',
+            'ordersPaid',
+            'ordersUnpaid',
+            'avgOrderValue',
             'ordersByStatus',
             'productsActive',
+            'productsTotal',
+            'lowStock',
+            'auctionsLive',
             'vendorsPending',
+            'vendorsApproved',
             'customersTotal',
+            'newCustomers30d',
+            'vendorEarnings',
+            'platformEarnings',
+            'topVendors',
             'recentOrders',
             'topProducts',
             'monthlyRevenue',
