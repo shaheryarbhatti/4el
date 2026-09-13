@@ -32,6 +32,23 @@
         </div>
     </div>
 
+    {{-- ═══════════════ QUICK ACTIONS ═══════════════ --}}
+    <div class="dbx-card">
+        <div class="dbx-card__head">
+            <h6 class="dbx-card__title"><i class="bx bx-grid-alt dbx-i-indigo"></i> Quick Actions</h6>
+        </div>
+        <div class="dbx-card__body">
+            <div class="dbx-actions">
+                <a href="{{ route('admin.orders.index') }}" class="dbx-action"><i class="bx bx-cart-alt dbx-i-blue"></i> Manage Orders</a>
+                <a href="{{ route('admin.products.index') }}" class="dbx-action"><i class="bx bx-package dbx-i-green"></i> Products</a>
+                <a href="{{ route('admin.vendors.index') }}" class="dbx-action"><i class="bx bx-store dbx-i-violet"></i> Vendors</a>
+                <a href="{{ route('admin.home-sections.index') }}" class="dbx-action"><i class="bx bx-layout dbx-i-indigo"></i> Home Sections</a>
+                <a href="{{ route('admin.settings.index', 'payment') }}" class="dbx-action"><i class="bx bx-credit-card dbx-i-amber"></i> Payment Gateways</a>
+                <a href="{{ route('home') }}" target="_blank" class="dbx-action"><i class="bx bx-link-external dbx-i-red"></i> View Storefront</a>
+            </div>
+        </div>
+    </div>
+
     {{-- ═══════════════ PRIMARY KPI CARDS ═══════════════ --}}
     <div class="row g-3">
         <div class="col-xl-3 col-md-6">
@@ -419,23 +436,6 @@
                         <div class="dbx-empty"><i class="bx bx-store"></i><p>No vendor sales yet</p></div>
                     @endforelse
                 </div>
-            </div>
-        </div>
-    </div>
-
-    {{-- ═══════════════ QUICK ACTIONS ═══════════════ --}}
-    <div class="dbx-card">
-        <div class="dbx-card__head">
-            <h6 class="dbx-card__title"><i class="bx bx-grid-alt dbx-i-indigo"></i> Quick Actions</h6>
-        </div>
-        <div class="dbx-card__body">
-            <div class="dbx-actions">
-                <a href="{{ route('admin.orders.index') }}" class="dbx-action"><i class="bx bx-cart-alt dbx-i-blue"></i> Manage Orders</a>
-                <a href="{{ route('admin.products.index') }}" class="dbx-action"><i class="bx bx-package dbx-i-green"></i> Products</a>
-                <a href="{{ route('admin.vendors.index') }}" class="dbx-action"><i class="bx bx-store dbx-i-violet"></i> Vendors</a>
-                <a href="{{ route('admin.home-sections.index') }}" class="dbx-action"><i class="bx bx-layout dbx-i-indigo"></i> Home Sections</a>
-                <a href="{{ route('admin.settings.index', 'payment') }}" class="dbx-action"><i class="bx bx-credit-card dbx-i-amber"></i> Payment Gateways</a>
-                <a href="{{ route('home') }}" target="_blank" class="dbx-action"><i class="bx bx-link-external dbx-i-red"></i> View Storefront</a>
             </div>
         </div>
     </div>
